@@ -14,6 +14,8 @@ const Home: NextPage = () => {
         path: '/api/socketio',
       });
 
+      if (socket.connected) setConnected(true);
+
       socket.emit('active', user);
       if (socket) return () => socket.disconnect();
     }
