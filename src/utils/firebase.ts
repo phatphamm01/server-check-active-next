@@ -2,7 +2,6 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getDatabase, ref, child, get, set } from 'firebase/database';
 import moment from 'moment-timezone';
-moment().tz('asia/ho_chi_minh').format();
 
 interface IFirebaseService {
   get: (userId: string) => Promise<unknown>;
@@ -50,7 +49,7 @@ const firebaseService: IFirebaseService = (() => {
       if (!status) {
         set(
           ref(db, 'user/' + userId + '/lastOperatingTime'),
-          moment().format('DD/MM/YYYY, hh:mm:ss')
+          moment().tz('asia/ho_chi_minh').format('DD/MM/YYYY, hh:mm:ss')
         );
       }
     },
