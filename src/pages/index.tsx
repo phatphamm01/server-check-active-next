@@ -10,13 +10,15 @@ const Home: NextPage = () => {
   let refSocket = useRef<any>();
 
   useEffect(() => {
-    refSocket.current = SocketIOClient(window.location.href, {
-      path: '/api/socketio',
-    });
+    fetch('/api/socketio').finally(() => {
+      refSocket.current = SocketIOClient(window.location.href, {
+        path: '/api/socketio',
+      });
 
-    refSocket.current.on('connect', () => {
-      console.log('SOCKET CONNECTED!', refSocket.current.id);
-      setConnected(true);
+      refSocket.current.on('connect', () => {
+        console.log('SOCKET CONNECTED!', refSocket.current.id);
+        setConnected(true);
+      });
     });
   }, []);
 
@@ -26,7 +28,13 @@ const Home: NextPage = () => {
     }
   }, [user]);
 
-  return <div>Con gà con: {connected ? 'Đã kết nối' : 'Chưa kết nối'}</div>;
+  return (
+    <div>
+      Con gà con: {connected ? 'Đã kết nối' : 'Chưa kết nối'}
+      <br />
+      {window.location.href}
+    </div>
+  );
 };
 
 export default Home;
