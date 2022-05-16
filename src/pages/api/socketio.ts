@@ -5,6 +5,12 @@ import { NextApiResponseServerIO } from 'types/next';
 import firebaseService from 'utils/firebase';
 import useUserSession from 'utils/session';
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponseServerIO
@@ -47,6 +53,8 @@ export default function handler(
 
     // append SocketIO server to Next.js socket server response
     res.socket.server.io = io;
+  } else {
+    console.log('socket.io already running');
   }
   res.end();
 }
