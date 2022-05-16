@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import { Socket } from 'socket.io';
 import SocketIOClient from 'socket.io-client';
 
 const Home: NextPage = () => {
@@ -11,9 +10,10 @@ const Home: NextPage = () => {
   let refSocket = useRef<any>();
 
   useEffect(() => {
-    refSocket.current = SocketIOClient({
+    refSocket.current = SocketIOClient(window.location.href, {
       path: '/api/socketio',
     });
+
     refSocket.current.on('connect', () => {
       console.log('SOCKET CONNECTED!', refSocket.current.id);
       setConnected(true);
@@ -21,7 +21,9 @@ const Home: NextPage = () => {
   }, []);
 
   useEffect((): any => {
-    refSocket.current.emit('active', user);
+    if (user) {
+      refSocket.current.emit('active', user);
+    }
   }, [user]);
 
   return <div>Con gà con: {connected ? 'Đã kết nối' : 'Chưa kết nối'}</div>;
