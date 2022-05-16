@@ -1,9 +1,9 @@
 import { NextApiRequest } from 'next';
 import { Server as ServerIO } from 'socket.io';
 import { Server as NetServer } from 'http';
-import { NextApiResponseServerIO } from '../types/next';
-import firebaseService from '../utils/firebase';
-import useUserSession from '../utils/session';
+import { NextApiResponseServerIO } from 'types/next';
+import firebaseService from 'utils/firebase';
+import useUserSession from 'utils/session';
 
 export default function handler(
   req: NextApiRequest,

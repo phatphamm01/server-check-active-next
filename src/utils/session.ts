@@ -1,5 +1,3 @@
-import { resolve } from 'path';
-
 const useUserSession = (() => {
   let userSessions: Record<string, string[]> = {};
 
