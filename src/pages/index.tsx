@@ -23,10 +23,10 @@ const Home: NextPage = () => {
   }, []);
 
   useEffect((): any => {
-    if (user) {
+    if (user && refSocket && refSocket.current) {
       refSocket.current.emit('active', user);
     }
-  }, [user]);
+  }, [user, refSocket.current]);
 
   return <div>Con gà con: {connected ? 'Đã kết nối' : 'Chưa kết nối'}</div>;
 };
