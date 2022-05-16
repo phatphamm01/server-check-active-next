@@ -14,9 +14,12 @@ const Home: NextPage = () => {
         path: '/api/socketio',
       });
 
-      if (socket.connected) setConnected(true);
+      socket.on('connect', () => {
+        console.log('SOCKET CONNECTED!', socket.id);
+        socket.emit('active', user);
+        setConnected(true);
+      });
 
-      socket.emit('active', user);
       if (socket) return () => socket.disconnect();
     }
   }, [user]);
