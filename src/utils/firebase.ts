@@ -49,7 +49,7 @@ const firebaseService: IFirebaseService = (() => {
       if (!status) {
         set(
           ref(db, 'user/' + userId + '/lastOperatingTime'),
-          moment().tz('asia/ho_chi_minh').format('DD/MM/YYYY, hh:mm:ss')
+          moment().tz('asia/ho_chi_minh').format('DD/MM/YYYY, HH:mm:ss')
         );
       }
     },
