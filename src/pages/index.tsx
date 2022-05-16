@@ -32,7 +32,7 @@ const Home: NextPage = () => {
     <div>
       Con gà con: {connected ? 'Đã kết nối' : 'Chưa kết nối'}
       <br />
-      {typeof window ? (this as any)?.location?.href : ''}
+      {window?.location?.href}
     </div>
   );
 };
