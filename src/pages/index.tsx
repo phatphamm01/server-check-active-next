@@ -28,13 +28,7 @@ const Home: NextPage = () => {
     }
   }, [user]);
 
-  return (
-    <div>
-      Con gà con: {connected ? 'Đã kết nối' : 'Chưa kết nối'}
-      <br />
-      {(this as any)?.location?.href}
-    </div>
-  );
+  return <div>Con gà con: {connected ? 'Đã kết nối' : 'Chưa kết nối'}</div>;
 };
 
 export default Home;
