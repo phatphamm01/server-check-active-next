@@ -44,7 +44,7 @@ const firebaseService: IFirebaseService = (() => {
       }),
     setWorking: (userId: string, status: boolean) => {
       const db = getDatabase();
-      set(ref(db, 'user/' + userId + '/isWorking'), status);
+      set(ref(db, 'user/' + userId + '/working'), status);
 
       if (!status) {
         set(
